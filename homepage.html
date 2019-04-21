@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script>
+        var ml = {
+            timelines: {}
+        };
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <input type="checkbox" id="nav" class="hidden">
+            <label for="nav" class="nav-btn">
+                <i></i>
+                <i></i>
+                <i></i>
+            </label>
+            <div class="logo">
+                <a href="#">d1gging</a>
+            </div>
+            <div class="nav-wrapper">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Overview</a></li>
+                    <li><a href="#">Prices</a></li>
+                    <li><a href="#">Purchase</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <h1 class="ml11">
+        <span class="text-wrapper">
+            <span class="line line1"></span>
+            <span class="letters">d1gging </span>
+        </span>
+    </h1>
+    <script>
+        // Wrap every letter in a span
+        $('.ml11 .letters').each(function() {
+            $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+        });
+
+        anime.timeline({
+                loop: true
+            })
+            .add({
+                targets: '.ml11 .line',
+                scaleY: [0, 1],
+                opacity: [0.5, 1],
+                easing: "easeOutExpo",
+                duration: 700
+            })
+            .add({
+                targets: '.ml11 .line',
+                translateX: [0, $(".ml11 .letters").width()],
+                easing: "easeOutExpo",
+                duration: 700,
+                delay: 500
+            }).add({
+                targets: '.ml11 .letter',
+                opacity: [0, 1],
+                easing: "easeOutExpo",
+                duration: 5000,
+                offset: '-=775',
+                delay: function(el, i) {
+                    return 34 * (i + 1)
+                }
+            
+            }).add({
+                targets: '.ml11',
+                opacity: 0,
+                duration: 1000000000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
+
+    </script>
+</body>
+
+</html>
